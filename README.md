@@ -23,6 +23,6 @@ app.use(minifyHTML({
 }));
 
 ```
-set override to false if you don't want to hijack the ordinary res.render function. This adds an additional res.renderMin function to minimize HTML. The 'htmlMinifier' opts are simply passed on to the html-minifier plugin. For all the available configuration options, see [the original repo!](https://github.com/kangax/html-minifier/blob/gh-pages/README.md)
+Set 'override' to false if you don't want to hijack the ordinary res.render function. This adds an additional res.renderMin function to the response object to render minimized HTML. The 'htmlMinifier' opts are simply passed on to the html-minifier plugin. For all the available configuration options, see [the original repo!](https://github.com/kangax/html-minifier/blob/gh-pages/README.md)
 
 Full examples can naturally be found under the 'examples'-folder of this repository!
