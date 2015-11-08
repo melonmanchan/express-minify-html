@@ -15,15 +15,15 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.set('views', './');
 
-
 app.use(minifyHTML({
     override: true,
-    minifierOpts:  {
+    htmlMinifier: {
         removeComments:            true,
         collapseWhitespace:        true,
         collapseBooleanAttributes: true,
         removeAttributeQuotes:     true,
-        removeEmptyAttributes:     true
+        removeEmptyAttributes:     true,
+        minifyJS:                  true
     }
 }));
 
