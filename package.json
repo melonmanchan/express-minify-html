@@ -1,0 +1,29 @@
+{
+  "name": "express-minify-html",
+  "version": "0.1.0",
+  "description": "Express middleware for HTML minifier",
+  "main": "minifier.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melonmanchan/express-minify-html.git"
+  },
+  "keywords": [
+    "express",
+    "html",
+    "minifier",
+    "middleware",
+    "minify"
+  ],
+  "author": "Matti Jokitulppo <melonmanchan@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/melonmanchan/express-minify-html/issues"
+  },
+  "homepage": "https://github.com/melonmanchan/express-minify-html#readme",
+  "dependencies": {
+    "html-minifier": "^1.0.0"
+  }
+}
