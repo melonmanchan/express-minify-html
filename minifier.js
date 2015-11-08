@@ -3,6 +3,7 @@
 var minify = require('html-minifier').minify;
 
 function minifyHTML(opts) {
+    if (!opts) opts = {};
     function minifier(req, res, next) {
         if (opts.override !== true) {
             res.renderMin = function (view, renderOpts) {
