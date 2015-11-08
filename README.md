@@ -19,7 +19,6 @@ app.use(minifyHTML({
         removeAttributeQuotes:     true,
         removeEmptyAttributes:     true,
         minifyJS:                  true
-
     }
 }));
 
