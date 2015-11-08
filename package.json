@@ -1,7 +1,7 @@
 {
   "name": "express-minify-html",
   "version": "0.1.0",
-  "description": "Express middleware for HTML minifier",
+  "description": "Express middleware around HTML minifier",
   "main": "minifier.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
