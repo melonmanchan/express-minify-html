@@ -5,7 +5,7 @@ var minify = require('html-minifier').minify;
 function minifyHTML(opts) {
     if (!opts) opts = {};
     function minifier(req, res, next) {
-        if (opts.override !== true) {
+        if (opts.override === false) {
             res.renderMin = function (view, renderOpts) {
                 this.render(view, renderOpts, function (err, html) {
                     if (err) throw err;
