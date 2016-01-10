@@ -9,7 +9,7 @@ function minifyHTML(opts) {
 
         var sendMinified = function (callback) {
 
-            // No callbak specified, just minify and send to client.
+            // No callback specified, just minify and send to client.
             if (typeof callback === 'undefined') {
                 return function (err, html) {
                     if (err) {
