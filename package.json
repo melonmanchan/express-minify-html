@@ -1,6 +1,6 @@
 {
   "name": "express-minify-html",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Express middleware around HTML minifier",
   "main": "minifier.js",
   "scripts": {
