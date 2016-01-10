@@ -2,7 +2,6 @@
 
 var minify = require('html-minifier').minify;
 
-
 function minifyHTML(opts) {
     if (!opts) opts = {};
 
