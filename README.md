@@ -40,5 +40,5 @@ Full examples can naturally be found under the 'examples'-folder of this reposit
 
 MIT © [Matti Jokitulppo](http://mattij.com)
 
-
 [![npm version](https://badge.fury.io/js/express-minify-html.svg)](https://badge.fury.io/js/express-minify-html)
+[![npm downloads](https://img.shields.io/npm/dm/express-minify-html.svg)](https://img.shields.io/npm/dm/express-minify-html.svg)
