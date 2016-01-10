@@ -16,7 +16,8 @@ app.set('view engine', 'handlebars');
 app.set('views', './');
 
 app.use(minifyHTML({
-    override: true,
+    override:      true,
+    displayErrors: true,
     htmlMinifier: {
         removeComments:            true,
         collapseWhitespace:        true,
