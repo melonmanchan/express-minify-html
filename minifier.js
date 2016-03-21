@@ -13,12 +13,11 @@ function minifyHTML(opts) {
             if (typeof callback === 'undefined') {
                 return function (err, html) {
                     if (err) {
-                        if (typeof opts.errCallback === 'function') //custom error callback specified
-                        {
+                        // Custom error callback specified
+                        if (typeof opts.errCallback === 'function') {
                             return opts.errCallback(err, req, res, next);
-                        }
-                        else //no custom error callback specified, default
-                        {
+                        } else {
+                            // no custom error callback specified, default
                             console.error(err)
                             if (opts.displayErrors === true) {
                                 res.send('Rendering error: ' + err.message);

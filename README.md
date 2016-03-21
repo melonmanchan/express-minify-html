@@ -48,7 +48,7 @@ If no callback is provided, res.render/res.renderMin sends the minified HTML to 
 express res.render does. Otherwise, the callback is called with the error object and the minified HTML content, as
 demonstrated above.
 
-Additionally, if no callback is provided - error handeling will be handled as explained when referencing displayErrors, but if you wish you can override this default behavor and define your own custom error callback such as this:
+Additionally, if no callback is provided - error handling will be handled as explained when referencing displayErrors, but if you wish you can override this default behavior and define your own custom error callback such as this:
 
 
 	app.use(minifyHTML({
