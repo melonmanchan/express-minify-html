@@ -13,12 +13,20 @@ function minifyHTML(opts) {
             if (typeof callback === 'undefined') {
                 return function (err, html) {
                     if (err) {
-                        console.error(err)
-                        if (opts.displayErrors === true) {
-                            res.send('Rendering error: ' + err.message);
-                        } else {
-                            res.sendStatus(500);
+                        if (typeof opts.errCallback === 'function') //custom error callback specified
+                        {
+                            return opts.errCallback(err, req, res, next);
                         }
+                        else //no custom error callback specified, default
+                        {
+                            console.error(err)
+                            if (opts.displayErrors === true) {
+                                res.send('Rendering error: ' + err.message);
+                            } else {
+                                res.sendStatus(500);
+                            }
+                        }
+                        
                     } else {
                         html = minify(html, opts.htmlMinifier);
                         res.send(html);
