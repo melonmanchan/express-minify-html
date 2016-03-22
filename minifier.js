@@ -23,7 +23,10 @@ function minifyHTML(opts) {
 
                 // Custom callback specified by user, use that one
                 return function (err, html) {
-                    html = minify(html, opts.htmlMinifier);
+                    if (html) {
+                        html = minify(html, opts.htmlMinifier);
+                    }
+
                     callback(err, html);
                 }
             }
