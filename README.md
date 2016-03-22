@@ -50,7 +50,7 @@ demonstrated above.
 
 Additionally, if no callback is provided - error handling will be handled as explained when referencing displayErrors, but if you wish you can override this default behavior and define your own custom error callback such as this:
 
-
+```js
 	app.use(minifyHTML({
 		override:      true,
 		errCallback: function(err, req, res, next)
@@ -65,7 +65,8 @@ Additionally, if no callback is provided - error handling will be handled as exp
 			removeEmptyAttributes:     false,
 			minifyJS:                  true
 		}
-	}));	
+	}));
+```
 
 Full examples can naturally be found under the 'examples'-folder of this repository!
 
