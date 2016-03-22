@@ -17,7 +17,6 @@ app.set('views', './');
 
 app.use(minifyHTML({
     override:      true,
-    displayErrors: true,
     htmlMinifier: {
         removeComments:            true,
         collapseWhitespace:        true,

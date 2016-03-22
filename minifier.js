@@ -13,23 +13,11 @@ function minifyHTML(opts) {
             if (typeof callback === 'undefined') {
                 return function (err, html) {
                     if (err) {
-                        // Custom error callback specified
-                        if (typeof opts.errCallback === 'function') {
-                            return opts.errCallback(err, req, res, next);
-                        } else {
-                            // no custom error callback specified, default
-                            console.error(err)
-                            if (opts.displayErrors === true) {
-                                res.send('Rendering error: ' + err.message);
-                            } else {
-                                res.sendStatus(500);
-                            }
-                        }
-                        
-                    } else {
-                        html = minify(html, opts.htmlMinifier);
-                        res.send(html);
+                        return next(err);
                     }
+
+                    html = minify(html, opts.htmlMinifier);
+                    res.send(html);
                 }
             } else {
 

@@ -16,7 +16,6 @@ var app = express();
 
 app.use(minifyHTML({
     override:      true,
-    displayErrors: process.env.NODE_ENV === 'development',
     htmlMinifier: {
         removeComments:            true,
         collapseWhitespace:        true,
@@ -40,33 +39,9 @@ Set 'override' to false if you don't want to hijack the ordinary res.render func
 
 The 'htmlMinifier' opts are simply passed on to the html-minifier plugin. For all the available configuration options, see [the original repo!](https://github.com/kangax/html-minifier/blob/gh-pages/README.md)
 
-The displayErrors parameter is used to determine whether or not possible rendering error messages
-(For example, Layout file not found) should be themselves rendered as HTML, or if the app should
-simply respond with a status code of 500, and nothing more.
-
 If no callback is provided, res.render/res.renderMin sends the minified HTML to the client just as the regular
 express res.render does. Otherwise, the callback is called with the error object and the minified HTML content, as
 demonstrated above.
-
-Additionally, if no callback is provided - error handling will be handled as explained when referencing displayErrors, but if you wish you can override this default behavior and define your own custom error callback such as this:
-
-```js
-	app.use(minifyHTML({
-		override:      true,
-		errCallback: function(err, req, res, next)
-		{
-			next(err);
-		},
-		htmlMinifier: {
-			removeComments:            true,
-			collapseWhitespace:        true,
-			collapseBooleanAttributes: true,
-			removeAttributeQuotes:     true,
-			removeEmptyAttributes:     false,
-			minifyJS:                  true
-		}
-	}));
-```
 
 Full examples can naturally be found under the 'examples'-folder of this repository!
 
