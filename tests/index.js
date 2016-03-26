@@ -47,6 +47,18 @@ test('Should minify EJS templates', function (t) {
         });
 });
 
+test('Should minify Jade templates', function (t) {
+    app.set('view engine', 'jade');
+
+    request(app)
+        .get('/test')
+        .expect(200)
+        .end(function (err, res) {
+            t.equal(res.text, expectedHTML);
+            t.end();
+        });
+});
+
 test('Should minify Handlebars templates', function (t) {
     app.set('view engine', 'handlebars');
 
