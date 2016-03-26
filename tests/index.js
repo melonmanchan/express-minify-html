@@ -3,9 +3,10 @@
 var express = require('express');
 var request = require('supertest');
 var test    = require('tape');
+var fs      = require('fs');
 
 var minifyHTML = require('../minifier.js');
-var expectedHTML = '<!DOCTYPE html><html><head class=head><meta charset=UTF-8><title>Express minify HTML handlebars example</title></head><body id=body>Hello world</body><script type=text/javascript>function reallyNiceFunction(){return"Hello!"}</script></html>';
+var expectedHTML = fs.readFileSync(__dirname + '/test.output.html', 'utf8');
 
 var exhbs = require('express-handlebars');
 var hbs  = exhbs.create({
