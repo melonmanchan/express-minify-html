@@ -35,9 +35,7 @@ app.get('/test', function (req, res, next) {
     res.render('test', { hello : 'world' });
 });
 
-test('Should minify EJS templates', function (t) {
-    app.set('view engine', 'ejs');
-
+function checkMinified(t) {
     request(app)
         .get('/test')
         .expect(200)
@@ -45,29 +43,23 @@ test('Should minify EJS templates', function (t) {
             t.equal(res.text, expectedHTML);
             t.end();
         });
+};
+
+test('Should minify EJS templates', function (t) {
+    app.set('view engine', 'ejs');
+
+    checkMinified(t);
 });
 
 test('Should minify Jade templates', function (t) {
     app.set('view engine', 'jade');
 
-    request(app)
-        .get('/test')
-        .expect(200)
-        .end(function (err, res) {
-            t.equal(res.text, expectedHTML);
-            t.end();
-        });
+    checkMinified(t);
 });
 
 test('Should minify Handlebars templates', function (t) {
     app.set('view engine', 'handlebars');
 
-    request(app)
-        .get('/test')
-        .expect(200)
-        .end(function (err, res) {
-            t.equal(res.text, expectedHTML);
-            t.end();
-        });
+    checkMinified(t);
 });
 
