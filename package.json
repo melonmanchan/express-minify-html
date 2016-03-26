@@ -4,7 +4,7 @@
   "description": "Express middleware around HTML minifier",
   "main": "minifier.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node tests"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,11 @@
   "homepage": "https://github.com/melonmanchan/express-minify-html#readme",
   "dependencies": {
     "html-minifier": "^1.0.0"
+  },
+  "devDependencies": {
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "supertest": "^1.2.0",
+    "tape": "^4.5.1"
   }
 }
