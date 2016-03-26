@@ -7,6 +7,10 @@ This express middleware simply enchances the regular 'render' method of the resp
 
 ## Usage
 
+```sh
+npm install --save --production express-minify-html express
+```
+
 ```js
 
 var express    = require('express');
