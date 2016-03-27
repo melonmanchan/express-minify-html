@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<!-- This unnecessary HTML comment should probably be removed! -->
+    <head class="head">
+        <meta charset="UTF-8">
+        <title>Express minify HTML test</title>
+    </head>
+    <body id="body">
+        Hello {{ hello }}
+    </body>
+    <script type="text/javascript">
+        function reallyNiceFunction   () {
+
+
+          return "Hello!";
+
+
+        };
+    </script>
+</html>

@@ -24,7 +24,8 @@
   },
   "homepage": "https://github.com/melonmanchan/express-minify-html#readme",
   "dependencies": {
-    "html-minifier": "^1.0.0"
+    "html-minifier": "^1.0.0",
+    "nunjucks": "2.4.1"
   },
   "devDependencies": {
     "ejs": "^2.4.1",
