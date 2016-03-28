@@ -65,13 +65,13 @@ test('Should minify Jade templates', function (t) {
     checkMinified(t);
 });
 
-test('should minify Handlebars templates', function (t) {
+test('Should minify Handlebars templates', function (t) {
     app.set('view engine', 'handlebars');
 
     checkMinified(t);
 });
 
-test('should minify Nunjucks templates', function (t) {
+test('Should minify Nunjucks templates', function (t) {
     app.set('view engine', 'nunjucks');
 
     checkMinified(t);
