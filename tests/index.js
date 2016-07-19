@@ -59,8 +59,8 @@ test('Should minify EJS templates', function (t) {
     checkMinified(t);
 });
 
-test('Should minify Jade templates', function (t) {
-    app.set('view engine', 'jade');
+test('Should minify Pug templates', function (t) {
+    app.set('view engine', 'pug');
 
     checkMinified(t);
 });

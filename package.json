@@ -1,6 +1,6 @@
 {
   "name": "express-minify-html",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Express middleware around HTML minifier",
   "main": "minifier.js",
   "scripts": {
@@ -30,7 +30,7 @@
     "ejs": "^2.4.1",
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
-    "jade": "^1.11.0",
+    "pug": "^0.1.0",
     "supertest": "^1.2.0",
     "tape": "^4.5.1",
     "nunjucks": "2.4.1"
