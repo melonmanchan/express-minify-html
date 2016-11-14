@@ -27,12 +27,14 @@
     "html-minifier": "2.1.6"
   },
   "devDependencies": {
-    "ejs": "^2.4.1",
-    "express": "^4.13.4",
-    "express-handlebars": "^3.0.0",
-    "pug": "^0.1.0",
-    "supertest": "^1.2.0",
-    "tape": "^4.5.1",
-    "nunjucks": "2.4.1"
+    "ejs": "2.5.2",
+    "express": "4.14.0",
+    "express-handlebars": "3.0.0",
+    "fs": "0.0.1-security",
+    "handlebars": "4.0.6",
+    "nunjucks": "2.4.1",
+    "pug": "0.1.0",
+    "supertest": "1.2.0",
+    "tape": "4.6.2"
   }
 }
