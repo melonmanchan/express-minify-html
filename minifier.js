@@ -1,6 +1,7 @@
 'use strict';
 
-var minify = require('html-minifier').minify;
+var objectMerge = require('object-merge'),
+    minify = require('html-minifier').minify;
 
 function minifyHTML(opts) {
 	var default_opts = {
@@ -11,18 +12,14 @@ function minifyHTML(opts) {
 			collapseWhitespace: true,
 			collapseBooleanAttributes: true,
 			removeAttributeQuotes: true,
-			removeEmptyAttributes: true,
-			minifyJS: true
+			removeEmptyAttributes: true
 		}
 	};
 
 	if (!opts || opts.constructor !== Object)
 		opts = {};
 
-	for (var attr in default_opts) {
-		if (!opts.hasOwnProperty(attr))
-			opts[attr] = default_opts[attr];
-	}
+    opts = objectMerge(default_opts, opts);
 
     if (opts.exception_url.constructor !== Array)
         opts.exception_url = [ opts.exception_url ];
