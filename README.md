@@ -50,17 +50,19 @@ demonstrated above.
 
 the `exception_url` optional parameter is a single value, or an array of strings, regexes and functions
 that can be used to check whether minifying should be skipped entirely.
+
 ```js
-	exception_url: [
-		'url_to_avoid_minify_html', // String.
-		/regex_to_analyze_req_to_avoid_minify/i, // Regex.
-		function(req, res) { // Function.
-			// Code to analyze req and decide if skips or not minify.
-			// Needs to return a boolean value.
-            return true
-		}
-	]
+exception_url: [
+    'url_to_avoid_minify_html', // String.
+    /regex_to_analyze_req_to_avoid_minify/i, // Regex.
+    function(req, res) { // Function.
+        // Code to analyze req and decide if skips or not minify.
+        // Needs to return a boolean value.
+        return true
+    }
+]
 ```
+
 Full examples can naturally be found under the 'examples'-folder of this repository!
 
 ## License
