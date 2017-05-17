@@ -34,7 +34,7 @@
     "handlebars": "4.0.6",
     "nunjucks": "2.4.1",
     "pug": "0.1.0",
-    "supertest": "1.2.0",
-    "tape": "4.6.2"
+    "supertest": "3.0.0",
+    "tape": "4.6.3"
   }
 }
