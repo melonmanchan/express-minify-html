@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/melonmanchan/express-minify-html#readme",
   "dependencies": {
-    "html-minifier": "3.5.0",
+    "html-minifier": "3.5.2",
     "lodash.merge": "4.6.0"
   },
   "devDependencies": {
