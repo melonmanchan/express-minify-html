@@ -3,7 +3,7 @@ Express middleware wrapper around HTML minifier
 
 ## Description
 
-This express middleware simply enchances the regular 'render' method of the response object for minifying HTML.
+This express middleware simply enchances the regular 'render' and 'send' method of the response object for minifying HTML.
 
 ## Usage
 
@@ -39,8 +39,12 @@ app.get('hello', function (req, res, next) {
     })
 });
 
+app.get('sendHello', function (req, res, next) {
+    res.send('<div> Hello! </div>');
+});
+
 ```
-Set 'override' to false if you don't want to hijack the ordinary res.render function. This adds an additional res.renderMin function to the response object to render minimized HTML. 
+Set 'override' to false if you don't want to hijack the ordinary res.render and res.send functions. This adds an additional res.renderMin and res.sendMin function to the response object to render minimized HTML. 
 
 The 'htmlMinifier' opts are simply passed on to the html-minifier plugin. For all the available configuration options, see [the original repo!](https://github.com/kangax/html-minifier/blob/gh-pages/README.md)
 

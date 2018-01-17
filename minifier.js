@@ -55,8 +55,7 @@ function minifyHTML(opts) {
               return next(err);
             }
 
-            html = minify(html, opts.htmlMinifier);
-            res.send(html);
+            res.sendMin(html);
           }
         } else {
 
@@ -75,11 +74,21 @@ function minifyHTML(opts) {
       this.render(view, renderOpts, sendMinified(callback));
     };
 
+    res.sendMin = function (html) {
+      this.send(minify(html, opts.htmlMinifier));
+	};
+
     if (opts.override && !skip) {
       res.oldRender = res.render;
+      res.oldSend = res.send;
+
       res.render = function (view, renderOpts, callback) {
         this.oldRender(view, renderOpts, sendMinified(callback));
       };
+
+	  res.send = function (html) {
+		this.oldSend(minify(html, opts.htmlMinifier));
+	  };
     }
 
     return next();

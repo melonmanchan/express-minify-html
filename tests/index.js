@@ -36,7 +36,7 @@ app.set('views', __dirname);
 
 app.use(minifyHTML({
     override:      true,
-    exception_url: ['skip-minify'],
+    exception_url: ['render-skip-minify', 'send-skip-minify'],
     htmlMinifier: {
         removeComments:            true,
         collapseWhitespace:        true,
@@ -47,16 +47,22 @@ app.use(minifyHTML({
     }
 }));
 
-app.get('/test', function (req, res, next) {
+app.get('/render-test', function (req, res, next) {
     res.render('test', { hello : 'world' });
 })
-.get('/skip-minify', function (req, res, next) {
+.get('/render-skip-minify', function (req, res, next) {
 	res.render('test', { hello : 'world' });
 })
+.get('/send-test', function (req, res, next) {
+	res.send(expectedRawHTML.default);
+})
+.get('/send-skip-minify', function (req, res, next) {
+	res.send(expectedRawHTML.default);
+});
 
-function checkMinified(t) {
+function checkMinified(t, path) {
     request(app)
-        .get('/test')
+        .get(path || '/render-test')
         .expect(200)
         .end(function (err, res) {
             t.equal(res.text, expectedHTML);
@@ -64,9 +70,9 @@ function checkMinified(t) {
         });
 }
 
-function checSkipMinified(t, engine) {
+function checSkipMinified(t, engine, path) {
     request(app)
-        .get('/skip-minify')
+        .get(path || '/render-skip-minify')
         .expect(200)
         .end(function (err, res) {
             var raw = expectedRawHTML[engine] || expectedRawHTML.default;
@@ -98,6 +104,11 @@ test('Should minify Nunjucks templates', function (t) {
 
     checkMinified(t);
 });
+
+test('Should minify on response.send', function (t) {
+    checkMinified(t, '/send-test');
+});
+
 test('Should skip minify EJS templates', function (t) {
     app.set('view engine', 'ejs');
 
@@ -119,4 +130,8 @@ test('Should skip minify Nunjucks templates', function (t) {
     app.set('view engine', 'nunjucks');
 
     checSkipMinified(t);
+});
+
+test('Should skip minify on response.send', function (t) {
+    checSkipMinified(t, null, '/send-skip-minify');
 });
