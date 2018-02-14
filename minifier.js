@@ -62,11 +62,15 @@ function minifyHTML(opts) {
 
           // Custom callback specified by user, use that one
           return function (err, html) {
-            if (html) {
-              html = minify(html, opts.htmlMinifier);
-            }
+	          try {
+		          if (html) {
+			          html = minify(html, opts.htmlMinifier);
+		          }
 
-            callback(err, html);
+		          callback(err, html);
+	          } catch (err) {
+		          callback(err);
+	          }
           }
         }
     };
