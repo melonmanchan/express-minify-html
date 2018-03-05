@@ -55,18 +55,27 @@ function minifyHTML(opts) {
               return next(err);
             }
 
-            html = minify(html, opts.htmlMinifier);
+            try {
+	            html = minify(html, opts.htmlMinifier);
+            } catch (err) {
+            	return res.status(500).send(err);
+            }
+
             res.send(html);
           }
         } else {
 
           // Custom callback specified by user, use that one
           return function (err, html) {
-            if (html) {
-              html = minify(html, opts.htmlMinifier);
-            }
+	          try {
+		          if (html) {
+			          html = minify(html, opts.htmlMinifier);
+		          }
 
-            callback(err, html);
+		          callback(err, html);
+	          } catch (err) {
+		          callback(err);
+	          }
           }
         }
     };

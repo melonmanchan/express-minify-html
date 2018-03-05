@@ -10,7 +10,7 @@ var expectedHTML = fs.readFileSync(__dirname + '/test.output.html', 'utf8'),
     expectedRawHTML = {
         default: fs.readFileSync(__dirname + '/test.output.raw.html', 'utf8'),
         pug: fs.readFileSync(__dirname + '/test.output.raw.pug.html', 'utf8'),
-        handlebars: fs.readFileSync(__dirname + '/test.output.raw.handlebars.html', 'utf8'),
+        handlebars: fs.readFileSync(__dirname + '/test.output.raw.handlebars.html', 'utf8')
     };
 
 var exhbs = require('express-handlebars');
@@ -47,12 +47,16 @@ app.use(minifyHTML({
     }
 }));
 
-app.get('/test', function (req, res, next) {
+app
+  .get('/test', function (req, res, next) {
     res.render('test', { hello : 'world' });
-})
-.get('/skip-minify', function (req, res, next) {
-	res.render('test', { hello : 'world' });
-})
+  })
+  .get('/test-broken', function (req, res, next) {
+    res.render('test-broken', { hello : 'world' });
+  })
+  .get('/skip-minify', function (req, res, next) {
+	  res.render('test', { hello : 'world' });
+  });
 
 function checkMinified(t) {
     request(app)
@@ -64,7 +68,7 @@ function checkMinified(t) {
         });
 }
 
-function checSkipMinified(t, engine) {
+function checkSkipMinified(t, engine) {
     request(app)
         .get('/skip-minify')
         .expect(200)
@@ -98,25 +102,35 @@ test('Should minify Nunjucks templates', function (t) {
 
     checkMinified(t);
 });
+
 test('Should skip minify EJS templates', function (t) {
     app.set('view engine', 'ejs');
 
-    checSkipMinified(t, 'ejs');
+    checkSkipMinified(t, 'ejs');
 });
+
 test('Should skip minify Pug templates', function (t) {
     app.set('view engine', 'pug');
 
-    checSkipMinified(t, 'pug');
+    checkSkipMinified(t, 'pug');
 });
 
 test('Should skip minify Handlebars templates', function (t) {
     app.set('view engine', 'handlebars');
 
-    checSkipMinified(t, 'handlebars');
+    checkSkipMinified(t, 'handlebars');
 });
 
 test('Should skip minify Nunjucks templates', function (t) {
     app.set('view engine', 'nunjucks');
 
-    checSkipMinified(t);
+    checkSkipMinified(t);
+});
+
+test('Should pass error to express on broken html', function (t) {
+	request(app)
+		.get('/test-broken')
+		.expect(500).end(function (err, res) {
+			t.end();
+		});
 });
