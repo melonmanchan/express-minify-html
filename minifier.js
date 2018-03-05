@@ -55,7 +55,12 @@ function minifyHTML(opts) {
               return next(err);
             }
 
-            html = minify(html, opts.htmlMinifier);
+            try {
+	            html = minify(html, opts.htmlMinifier);
+            } catch (err) {
+            	return res.status(500).send(err);
+            }
+
             res.send(html);
           }
         } else {
