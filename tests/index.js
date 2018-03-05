@@ -47,12 +47,13 @@ app.use(minifyHTML({
     }
 }));
 
-app.get('/test', function (req, res, next) {
+app
+  .get('/test', function (req, res, next) {
     res.render('test', { hello : 'world' });
-})
-.get('/skip-minify', function (req, res, next) {
-	res.render('test', { hello : 'world' });
-})
+  })
+  .get('/skip-minify', function (req, res, next) {
+	  res.render('test', { hello : 'world' });
+  });
 
 function checkMinified(t) {
     request(app)
@@ -64,7 +65,7 @@ function checkMinified(t) {
         });
 }
 
-function checSkipMinified(t, engine) {
+function checkSkipMinified(t, engine) {
     request(app)
         .get('/skip-minify')
         .expect(200)
@@ -98,25 +99,27 @@ test('Should minify Nunjucks templates', function (t) {
 
     checkMinified(t);
 });
+
 test('Should skip minify EJS templates', function (t) {
     app.set('view engine', 'ejs');
 
-    checSkipMinified(t, 'ejs');
+    checkSkipMinified(t, 'ejs');
 });
+
 test('Should skip minify Pug templates', function (t) {
     app.set('view engine', 'pug');
 
-    checSkipMinified(t, 'pug');
+    checkSkipMinified(t, 'pug');
 });
 
 test('Should skip minify Handlebars templates', function (t) {
     app.set('view engine', 'handlebars');
 
-    checSkipMinified(t, 'handlebars');
+    checkSkipMinified(t, 'handlebars');
 });
 
 test('Should skip minify Nunjucks templates', function (t) {
     app.set('view engine', 'nunjucks');
 
-    checSkipMinified(t);
+    checkSkipMinified(t);
 });
