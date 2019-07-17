@@ -25,15 +25,15 @@
   "homepage": "https://github.com/melonmanchan/express-minify-html#readme",
   "dependencies": {
     "html-minifier": "3.5.7",
-    "lodash.merge": "4.6.0"
+    "lodash.merge": "4.6.2"
   },
   "devDependencies": {
     "ejs": "2.5.2",
-    "express": "4.15.3",
+    "express": "4.17.1",
     "express-handlebars": "3.0.0",
-    "handlebars": "4.0.6",
-    "nunjucks": "2.4.1",
-    "pug": "0.1.0",
+    "handlebars": "4.1.2",
+    "nunjucks": "3.2.0",
+    "pug": "2.0.4",
     "supertest": "3.0.0",
     "tape": "4.6.3"
   }
